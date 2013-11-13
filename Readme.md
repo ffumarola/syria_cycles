@@ -36,7 +36,7 @@ See the API documentation for a more technical overview of the features
 
 - Set an environment variable for the database connection string:
 
-         export database_url="postgres://USERNAME:PASSWORD@localhost/syria_cycles"
+         export DATABASE_URL="postgres://USERNAME:PASSWORD@localhost/syria_cycles"
 
 - Run the tests (tests are written for each HTTP route.  See the API documentation):
 
