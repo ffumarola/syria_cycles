@@ -22,7 +22,7 @@ module.exports.create = function(pgClient) {
             });
           }
           else {
-            res.send(500, {success: false, errorMessage: "An error occurred checking station status."});
+            res.send(404, {success: false, errorMessage: "Station not found."});
           }
         });
       });

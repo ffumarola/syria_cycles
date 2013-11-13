@@ -10,6 +10,18 @@ module.exports.create = function(pgClient) {
           res.send(500, {success: false, errorMessage: "An error occurred creating a new member."});
         }
       });
+    },
+    memberInfo: function(req, res) {
+      membersDao.info(req.params.id, function(error, info) {
+        membersDao.tripHistory(req.params.id, function(error, tripHistory) {
+          if (!error) {
+            res.send({success: true, info: info, tripHistory: tripHistory});
+          }
+          else {
+            res.send(404, {success: false, errorMessage: "Member not found."});
+          }
+        })
+      })
     }
   };
   return self;

@@ -47,6 +47,7 @@ See the API documentation for a more technical overview of the features
         node app.js
 
 ## API
+*Note:  All POST requests return {success: true} in the success case, or {success: false, errorMessage: error message} in an error case.*
 
 ### Create a new Bikeshare Member
 
@@ -114,4 +115,42 @@ See the API documentation for a more technical overview of the features
         {
             'memberId': 1,
             'stationId': 1
+        }
+
+###Get Member Info and Trip History
+
+####GET /members/:id
+
+- Reponse Object:
+
+        {
+          "success": true,
+          "info": {
+            "id": 1,
+            "name": "Jeff",
+            "keyfob": "ABC123",
+            "email": "fake@mailinator.com"
+          },
+          "tripHistory": [
+            {
+              "id": 1,
+              "start_time": "2013-11-12T23:05:00.711Z",
+              "end_time": "2013-11-13T01:49:02.397Z",
+              "members_id": 1,
+              "bikes_id": 1,
+              "start_station_id": 1,
+              "end_station_id": 1,
+              "in_progress": false
+            },
+            {
+              "id": 2,
+              "start_time": "2013-11-12T23:07:50.291Z",
+              "end_time": "2013-11-13T01:49:02.397Z",
+              "members_id": 1,
+              "bikes_id": 1,
+              "start_station_id": 1,
+              "end_station_id": 1,
+              "in_progress": false
+            }
+          ]
         }

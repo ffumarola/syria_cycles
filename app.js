@@ -16,13 +16,21 @@ var app = express();
 app.use(express.json());
 app.use(express.urlencoded());
 
+//Adds new member to the system
 app.post('/members/new', membersController.newMember);
+//Gets info and trip history for a member
+app.get('/members/:id', membersController.memberInfo);
 
+//Adds a new station to the system
 app.post('/stations/new', stationsController.newStation);
+//Gets number of available bikes and available docks for a station
 app.get('/stations/:id', stationsController.stationStatus);
 
+//Adds a new bike to the system
 app.post('/bikes/new', bikesController.newBike);
+//Checks out a bike for a given member
 app.post('/bikes/checkout/:id', bikesController.checkoutBike);
+//Checks in a bike for a given member at a given station
 app.post('/bikes/checkin/:id', bikesController.checkinBike);
 
 app.listen(port);

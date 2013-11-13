@@ -89,3 +89,14 @@ describe('POST /bikes/checkin/:id', function() {
       });
   });
 });
+
+describe('GET /members/:id', function() {
+  it('gets info and trip history for a member', function(done) {
+    request(app)
+      .get('/members/1')
+      .expect(200)
+      .end(function(error, res) {
+        done();
+      });
+  });
+});
