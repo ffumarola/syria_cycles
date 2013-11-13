@@ -19,6 +19,7 @@ The application provides the basic features necessary to run a bikeshare system,
 - Checking the status of a station (number of bikes available, number of free docking spaces available)
 - Checking out a bike from a given station as a member
 - Checking a bike back into another station as a member
+- Getting the trip history and personal info for a given member
 
 See the API documentation for a more technical overview of the features
 
