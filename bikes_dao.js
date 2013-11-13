@@ -19,7 +19,7 @@ module.exports.create = function(pgClient) {
       var queryVals = [memberId, true];
       pgClient.query(queryString, queryVals, function(error, result) {
         if (result.rows[0].count > 0) {
-          callback("Member already has bike checked out", null);
+          callback("Member already has bike checked out", false);
         }
         else {
           //determine which station the bike is at
@@ -34,7 +34,7 @@ module.exports.create = function(pgClient) {
               var queryString = "DELETE FROM bikes_to_stations WHERE bikes_id=$1";
               var queryVals = [bikeId];
               pgClient.query(queryString, queryVals, function(error, result) {
-                callback(null, true);
+                callback(error, true);
               });
             });
           });
@@ -50,7 +50,7 @@ module.exports.create = function(pgClient) {
         var queryString = "INSERT INTO bikes_to_stations (bikes_id, stations_id) VALUES ($1, $2)";
         var queryVals = [bikeId, stationId];
         pgClient.query(queryString, queryVals, function(error, result) {
-          callback(null, true);
+          callback(error, true);
         });
       });
     }

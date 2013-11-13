@@ -3,16 +3,27 @@ module.exports.create = function(pgClient) {
   var self = {   
     newStation: function(req, res) {
       stationsDao.new(req.body.name, req.body.latitude, req.body.longitude, req.body.capacity, function(error, result) {
-        res.send({success: true});
+        if (!error) {
+          res.send({success: true});
+        }
+        else {
+          res.send(500, {success: false, errorMessage: "An error occurred creating a new station."})
+        }
       });
     },
     stationStatus: function(req, res) {
       stationsDao.bikesAtStation(req.params.id, function(error, numberOfBikes) {
         stationsDao.stationCapacity(req.params.id, function(error, capacity) {
-          res.send({
-            availableBikes: numberOfBikes,
-            availableDocks: capacity - numberOfBikes
-          });
+          if (!error) {
+            res.send({
+              success: true,
+              availableBikes: numberOfBikes,
+              availableDocks: capacity - numberOfBikes
+            });
+          }
+          else {
+            res.send(500, {success: false, errorMessage: "An error occurred checking station status."});
+          }
         });
       });
     }
