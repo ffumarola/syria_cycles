@@ -155,3 +155,5 @@ See the API documentation for a more technical overview of the features
             }
           ]
         }
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5a9236d5b42d1bb8a8aa5b33bcc0f2a2 "githalytics.com")](http://githalytics.com/jcsicsek/syria_cycles)
